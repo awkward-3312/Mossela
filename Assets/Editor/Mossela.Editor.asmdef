@@ -2,7 +2,8 @@
     "name": "Mossela.Editor",
     "rootNamespace": "Mossela.Editor",
     "references": [
-        "Unity.RenderPipelines.Universal.Runtime"
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Universal.2D.Runtime"
     ],
     "includePlatforms": [
         "Editor"
