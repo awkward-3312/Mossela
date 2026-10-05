@@ -3,7 +3,8 @@
     "rootNamespace": "Mossela.World",
     "references": [
         "Mossela.Character",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "UnityEngine.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

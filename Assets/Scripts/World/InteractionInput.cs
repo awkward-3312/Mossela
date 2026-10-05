@@ -1,14 +1,19 @@
 using Mossela.Character;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Mossela.World
 {
-    // Turns a mouse click or a screen tap into an Interact call on the IInteractable under the pointer.
+    // Turns a mouse click or a screen tap into game actions:
+    // a tap on an IInteractable runs it; a tap on empty space releases the furniture Haru is using.
     public class InteractionInput : MonoBehaviour
     {
         [SerializeField] private Camera worldCamera;
         [SerializeField] private HaruController haru;
+        [SerializeField] private bool ignoreUi = true;
+
+        private IReleasable current;
 
         private void Awake()
         {
@@ -20,16 +25,45 @@ namespace Mossela.World
         {
             var pointer = Pointer.current;
             if (pointer == null || !pointer.press.wasPressedThisFrame) return;
-            if (worldCamera == null) return;
 
-            Vector2 screen = pointer.position.ReadValue();
-            Vector2 world = worldCamera.ScreenToWorldPoint(screen);
+            HandleTap(pointer.position.ReadValue());
+        }
 
+        public void HandleTap(Vector2 screenPosition)
+        {
+            if (worldCamera == null || haru == null) return;
+            if (ignoreUi && IsOverUi()) return;
+
+            Vector2 world = worldCamera.ScreenToWorldPoint(screenPosition);
             var hit = Physics2D.OverlapPoint(world);
-            if (hit == null) return;
+            var interactable = hit != null ? hit.GetComponentInParent<IInteractable>() : null;
 
-            var interactable = hit.GetComponentInParent<IInteractable>();
-            interactable?.Interact(haru);
+            if (interactable != null)
+            {
+                interactable.Interact(haru);
+                current = interactable as IReleasable;
+                return;
+            }
+
+            ReleaseCurrent();
+        }
+
+        private void ReleaseCurrent()
+        {
+            if (current != null)
+            {
+                current.Release(haru);
+                current = null;
+            }
+            else if (haru.CurrentPose != HaruPose.Idle)
+            {
+                haru.SetPose(HaruPose.Idle);
+            }
+        }
+
+        private static bool IsOverUi()
+        {
+            return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
         }
     }
 }
