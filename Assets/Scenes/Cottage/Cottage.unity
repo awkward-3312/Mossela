@@ -155,6 +155,10 @@ PrefabInstance:
       value: Haru
       objectReference: {fileID: 0}
     - target: {fileID: 4001, guid: f54695bb872052e89f737fc5766efdeb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001, guid: f54695bb872052e89f737fc5766efdeb, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.5
       objectReference: {fileID: 0}
@@ -182,11 +186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6001, guid: ebbf80fe824150699e15f857159c9600, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6001, guid: ebbf80fe824150699e15f857159c9600, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
