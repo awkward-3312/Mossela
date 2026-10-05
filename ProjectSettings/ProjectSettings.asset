@@ -171,6 +171,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.mossela.game
+    Standalone: com.Mossela.Mossela
     iPhone: com.mossela.game
   buildNumber:
     Standalone: 0
