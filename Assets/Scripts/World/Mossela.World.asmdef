@@ -1,0 +1,17 @@
+{
+    "name": "Mossela.World",
+    "rootNamespace": "Mossela.World",
+    "references": [
+        "Mossela.Character",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
