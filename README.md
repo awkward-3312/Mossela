@@ -20,3 +20,10 @@
 - `HaruVisual` draws either a full-character sprite (default) or the modular rig (`Visual/Modular`, disabled by default).
 - `MicroAnimator` handles breathing, blink, ear twitch and tail sway.
 - The modular parts do not share one canvas, apart from the head group. Align them in the editor before enabling modular mode, and set pivots on the ears and tail.
+
+## Cottage scene layout
+- `Environment`: `Wall`, `Baseboard`, `Floor`, `Window` (`Frame`, `Glass`, `Mullion_V`, `Mullion_H`, `Sill`). Sorting layer Background.
+- `Furniture`: `ChairSpot` (holds the Chair prefab), `Zone_Shelf`, `Zone_Bed`, `Zone_Table`. Sorting layer Furniture.
+- `Character`: Haru. Sorting layer Character.
+- `Systems`: `Main Camera` (orthographic size 6.4, 7.2 x 12.8 units in portrait) and `Interaction`.
+- Every placeholder is a tinted, scaled `Assets/Art/Environment/Placeholders/Placeholder_Square.png`. To swap in final art, assign the new sprite to that object, set its scale back to 1 and tint to white.
